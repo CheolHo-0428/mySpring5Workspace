@@ -23,6 +23,8 @@ public class BoardDAOSpring{
 	private final String BOARD_DELETE = "delete from BOARD where seq=?";
 	private final String BOARD_GET = "select * from BOARD where seq=?";
 	private final String BOARD_LIST = "select * from BOARD order by seq desc";
+	private final String BOARD_LIST_T = "select * from BOARD where title like concat('%',?,'%') order by seq desc";
+	private final String BOARD_LIST_C = "select * from BOARD where content like concat('%',?,'%') order by seq desc";
 		
 	// 글등록
 	public void insertBoard(BoardVO vo) {
@@ -53,6 +55,13 @@ public class BoardDAOSpring{
 	//글 목록조회
 	public List<BoardVO> getBoardList(BoardVO vo){
 		System.out.println("===> Spring JDBC로 getBoardList() 기능 처리");
-		return jdbcTemplate.query(BOARD_LIST, new BoardRowMapper());
+		
+		Object[] args = {vo.getSearchKeyword()};
+		if(vo.getSearchCondition().equals("TITLE")) {
+			return jdbcTemplate.query(BOARD_LIST_T, args, new BoardRowMapper());
+		} else if(vo.getSearchCondition().equals("CONTENT")) {
+			return jdbcTemplate.query(BOARD_LIST_C, args, new BoardRowMapper());
+		}
+		return null;
 	}
 }
