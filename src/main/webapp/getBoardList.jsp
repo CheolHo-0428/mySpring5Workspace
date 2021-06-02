@@ -2,6 +2,7 @@
 <%@page import="com.springbook.biz.board.impl.BoardDAO"%>
 <%@page import="com.springbook.biz.board.BoardVO"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <% 
@@ -51,7 +52,7 @@
 					<td>${board.seq }</td>
 					<td><a href="getBoard.do?seq=${board.seq}">${board.title}</a> </td>
 					<td>${board.writer}</td>
-					<td>${board.regdate}</td>
+					<td><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/></td>
 					<td>${board.cnt}</td>
 				</tr>
 			</c:forEach>
