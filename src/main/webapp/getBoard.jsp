@@ -1,7 +1,8 @@
 <%@page import="com.springbook.biz.board.impl.BoardDAO"%>
 <%@page import="com.springbook.biz.board.BoardVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <% 
 //	request.setCharacterEncoding("utf-8");
 //	String seq = request.getParameter("seq");
@@ -48,7 +49,7 @@
 				</tr>
 				<tr>
 					<td bgcolor="orange">등록일</td>
-					<td align="left">${board.regdate}</td>
+					<td align="left"><fmt:formatDate value="${board.regdate}" pattern="yyyy-MM-dd"/></td>
 				</tr>
 				<tr>
 					<td bgcolor="orange">조회수</td>

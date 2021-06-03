@@ -82,8 +82,8 @@ public class BoardController {
 	@ModelAttribute("conditionMap")
 	public Map<String, String> searchConditionMap(){
 		Map<String, String> conditionMap = new HashMap<String, String>();
-		conditionMap.put("제목", "TITLE");
 		conditionMap.put("내용", "CONTENT");
+		conditionMap.put("제목", "TITLE");
 		return conditionMap;
 	}
 	
